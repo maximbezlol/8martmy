@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>С 8 Марта! M.M.В</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: #f4d1d6;
+            font-family: Arial, sans-serif;
+            overflow: hidden;
+        }
+
+        .heart {
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            background: #ff6b6b;
+            transform: rotate(-45deg);
+            animation: float 6s ease-in infinite;
+        }
+
+        .heart:before,
+        .heart:after {
+            content: "";
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            background: #ff6b6b;
+            border-radius: 50%;
+        }
+
+        .heart:before {
+            top: -15px;
+            left: 0;
+        }
+
+        .heart:after {
+            left: 15px;
+            top: 0;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(100vh) rotate(-45deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100vh) rotate(-45deg);
+                opacity: 0;
+            }
+        }
+
+        .greeting {
+            position: absolute;
+            z-index: 1;
+            text-align: center;
+            color: #fff;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 30px;
+            border-radius: 15px;
+            animation: fadeIn 2s ease-in forwards;
+            opacity: 0;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .photos {
+            display: none;
+            text-align: center;
+            padding: 20px;
+            z-index: 2;
+            background: rgba(0, 0, 0, 0.5); /* Темный полупрозрачный фон */
+            border-radius: 15px;
+            color: #fff; /* Белый текст для контраста */
+            width: 80%; /* Ограничиваем ширину */
+            max-width: 800px; /* Максимальная ширина */
+            margin: 0 auto; /* Центрируем */
+        }
+
+        .photos img {
+            width: 70px;
+            height: 70px;
+            object-fit: cover;
+            margin: 10px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+
+        @keyframes fadeInPhotos {
+            from { opacity: 0; transform: scale(0.9); }
+            to { opacity: 1; transform: scale(1); }
+        }
+    </style>
+</head>
+<body>
+    <div class="greeting">
+        <h1>С 8 Марта!</h1>
+        <p>Дорогие наши девочки!(7А)</p>
+        <p>Поздравляем вас с Международным женским днём!</p>
+        <p>Желаем вам счастья, любви, весеннего настроения и море улыбок!</p>
+        <p>С праздникам вас ❤️ </p>
+    </div>
+
+    <div class="photos" id="photosSection">
+        <h2>это вы</h2>
+        <!-- Замените src на пути к вашим фотографиям -->
+        <img src="/8 March/img/photo_1_2025-03-06_22-02-14.jpg" alt="Одноклассница 1">
+        <img src="/8 March/img/photo_2_2025-03-06_22-02-14.jpg" alt="Одноклассница 2">
+        <img src="/8 March/img/photo_3_2025-03-06_22-02-14.jpg" alt="Одноклассница 3">
+        <img src="/8 March/img/photo_4_2025-03-06_22-02-14.jpg" alt="Одноклассница 3">
+        <img src="/8 March/img/photo_5_2025-03-06_22-02-14.jpg" alt="Одноклассница 3">
+        <img src="/8 March/img/photo_6_2025-03-06_22-02-14.jpg" alt="Одноклассница 3">
+        <img src="/8 March/img/photo_7_2025-03-06_22-02-14.jpg" alt="Одноклассница 3">
+        <img src="/8 March/img/photo_8_2025-03-06_22-02-14.jpg" alt="Одноклассница 3">
+        <img src="/8 March/img/photo_10_2025-03-06_22-02-14.jpg" alt="Одноклассница 3">
+        <img src="/8 March/img/photo_9_2025-03-06_22-02-14.jpg" alt="Одноклассница 3">
+        <!-- Добавьте больше <img> тегов по необходимости -->
+        <h2> зачем вам это я не знаю </h2>
+    </div>
+
+
+
+    <script>
+        function createHeart() {
+            const heart = document.createElement("div");
+            heart.className = "heart";
+            heart.style.left = Math.random() * 100 + "vw";
+            heart.style.animationDuration = Math.random() * 3 + 3 + "s";
+            document.body.appendChild(heart);
+
+            setTimeout(() => {
+                heart.remove();
+            }, 6000);
+        }
+
+        // Создаем сердечки каждые 200мс
+        setInterval(createHeart, 200);
+
+        // Переход к фотографиям через 10 секунд
+        setTimeout(() => {
+            const greeting = document.querySelector('.greeting');
+            const photos = document.getElementById('photosSection');
+            
+            greeting.style.display = 'none'; // Скрываем поздравление
+            photos.style.display = 'block';  // Показываем фото
+            photos.style.animation = 'fadeInPhotos 1s ease-in forwards'; // Анимация появления
+        }, 10000); // 10 секунд
+    </script>
+</body>
+</html>
